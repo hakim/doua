@@ -1,0 +1,8 @@
+from django.conf.urls.defaults import *
+
+from search import views
+
+urlpatterns = patterns('',
+    # search url
+    url(r'^$', views.search_func, name="search"),
+)
