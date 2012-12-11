@@ -1,5 +1,5 @@
 # Create your views here.
-from app.models import Drogs
+from new_drug.models import Drug
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.models import User
@@ -8,10 +8,12 @@ from django.http import HttpResponse
 
 
 @csrf_exempt
+
+
 def search_func(request):
     searched_name = request.POST['query']
-    all = Drogs.objects.all()
-    if searched_name in all:
-        return HttpResponse("Drugs Exist")
-    else
-        return HttpResponse("Drug Doesn\'t exist ")
+    all = Drug.objects.all()
+    if Drug.objects.filter(business_name=searched_name) or Drug.objects.filter(chemical_name=searched_name):
+        return HttpResponse("Drug Exist")
+    else:
+        return HttpResponse("Drug doesn\'t Exist")
