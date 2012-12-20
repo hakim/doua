@@ -13,7 +13,7 @@ from django.http import HttpResponse
 def search_func(request):
     searched_name = request.POST['query']
     all = Drug.objects.all()
-    if Drug.objects.filter(business_name=searched_name) or Drug.objects.filter(chemical_name=searched_name):
+    if Drug.objects.filter(business_name__iexact=searched_name) or Drug.objects.filter(chemical_name__iexact=searched_name):
         return HttpResponse("Drug Exist")
     else:
         return HttpResponse("Drug doesn\'t Exist")
