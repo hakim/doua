@@ -82,8 +82,11 @@
       <hr>
         <div class="row">
 	
-         {{ searched_Drugs  }}
-
+         <a>
+            {{ Searched_drugs  }}
+         </a> 
+		<br>
+	    {{ Searched_drugs.description}}
          </div>  
 
       <hr>
