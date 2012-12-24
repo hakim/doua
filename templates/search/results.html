@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% block logo %}
+
+{% endblock %}
+
+{% block search_form %}
+ <div class="span6">
+             <form class="form-inline" method="GET" action="{% url search_drug %}">
+             <input class="input span5" name="query" placeholder="Taper vos requette ici!">
+             <button class="btn btn-primary" type="submit" > Recherche </button>
+            </form>
+</div>
+
+{% endblock %}
+
+{% block results  %}
+
+       <div class="span6">      
+
+       <table class="table table-hover">
+       	{% for d in drugs %}
+	    
+            <tr>
+		<td width="20%">{{ d.business_name }}</td>
+		<td width="20%"> {{d.chemical_name }}</td>
+                <td width="60%"> {{d.description}}</td> 
+                 
+           </tr>
+	   
+	{% endfor %}
+       </table>
+       </div>
+{% endblock %}		
