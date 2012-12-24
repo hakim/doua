@@ -14,7 +14,7 @@ def search_func(request):
     searched_name = request.POST['query']
     all = Drug.objects.all()
     if Drug.objects.filter(chemical_name__iexact=searched_name) :
-       d1 =  Drug.objects.get(chemical_name__iexact=searched_name)
+       d1 =  Drug.objects.filter(chemical_name__iexact=searched_name)
     else:
        d1 = "Drug  doesn't exist."
     return render_to_response("result_search.html", {'Searched_drugs':d1},context_instance=RequestContext(request)  )

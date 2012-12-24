@@ -82,11 +82,15 @@
       <hr>
         <div class="row">
 	
-         <a>
-            {{ Searched_drugs  }}
-         </a> 
+	{% for e in Searched_drugs %}
 		<br>
-	    {{ Searched_drugs.description}}
+			<a>
+			    {{ e.business_name }}
+			</a>    
+		<br>
+	    {{ e.description}} 
+	{% endfor %}
+		
          </div>  
 
       <hr>
