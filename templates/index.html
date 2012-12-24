@@ -73,24 +73,29 @@
         <h3 class="muted">DOUA</h3>
       </div>
 
+      {% block logo %}
       <hr>
-
       <div class="jumbotron">
         <h2>Toute l'info sur les medicaments</h2>
       </div>
-      
+
+      {% endblock %}      
       <hr>
       <div class="row">
-         <div class="span6 offset1">
-           <form class="form-inline" method="POST" action="/search/">
+         {% block search_form %}
+           <div class="span6 offset1">
+             <form class="form-inline" method="GET" action="{% url search_drug %}">
              <input class="input-xlarge span5" name="query" placeholder="Taper vos requette ici!">
              <button class="btn btn-primary" type="submit" > Recherche </button>
            </form>   
            </div>
+         {% endblock %}
 
-         </div>  
+      {% block results %}
+     
+       {% endblock %}      
+     </div>  
 
-      <hr>
 
       <div class="footer">
         <p>© Company 2012</p>

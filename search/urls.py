@@ -1,8 +1,5 @@
 from django.conf.urls.defaults import *
-#from search import views
 
-urlpatterns = patterns('search.views',
-    # search url
-    url(r'^$', search_func, name='search'),
-
+urlpatterns = patterns('',
+    url(r'results$', 'search.views.search', name='search_drug'),
 )
