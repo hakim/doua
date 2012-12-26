@@ -19,33 +19,41 @@
        <div class="span6">      
       
        <table class="table table-hover">
-	{% if alter == 0 %}
-       	{% for d in drugs %}
+       {% if drugs %}       	
+                {% for d in drugs %}
 	    
-            <tr>
-		<td width="20%">{{ d.business_name }}</td>
-		<td width="20%"> {{d.chemical_name }}</td>
-                <td width="60%"> {{d.description}}</td> 
+                   <tr>
+	        	<td width="20%">{{ d.business_name }}</td>
+		        <td width="20%"> {{d.chemical_name }}</td>
+                        <td width="60%"> {{d.description}}</td> 
                  
-           </tr>
-	   
-	{% endfor %}
-        {% else %}{% if alter == 1 %}
-            Do you mean : {{ string }} 
-        {% for d in drugs %}
-            <tr>
+                   </tr>
+ 	   
+         	{% endfor %}
+        
+       {% else %}
+          {%if  eq_drugs %}
+            {% if eq_strings %}
+               Did you mean : {% for string in eq_strings%} 
+                             <a href="{% url search_drug %}?query={{string}}"> {{string}}</a> 
+                             {%endfor %} 
+            {% endif %}
+           {% for d in eq_drugs %}
+             <tr>
                 <td width="20%">{{ d.business_name }}</td>
                 <td width="20%"> {{d.chemical_name }}</td>
                 <td width="60%"> {{d.description}}</td>
                  
-           </tr>
-        {% endfor %}
+             </tr>
+          {% endfor %}
 
-	{% else %}{% if alter == 2 %}
-	  <tr>
-                <td width="20%">Drug Doesn't Exist </td>
+         {% else %}
+	   <tr>
+                <td colspan="3">Ce médicament n'exist pas dans notre base de données </td>
            </tr>
-	{% endif %} {% endif %} {% endif %}
+	 {% endif %}
+        {% endif %} 
+       
        </table>
        </div>
 {% endblock %}		
